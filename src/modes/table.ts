@@ -46,7 +46,7 @@ function handView(label: string, cls: string): HandView {
   const badge = h('span', { class: 'hand-badge', hidden: true });
   const root = h(
     'div',
-    { class: `hand ${cls}`, 'aria-label': label },
+    { class: `hand ${cls}`, role: 'group', 'aria-label': label },
     cards,
     h('div', { class: 'hand-meta' }, total, badge),
   );

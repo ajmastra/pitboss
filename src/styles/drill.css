@@ -484,14 +484,6 @@
 .np-submit:not(:disabled):hover {
   background: linear-gradient(180deg, var(--accent-200), var(--accent-400));
 }
-@media (max-height: 740px) {
-  .np-key {
-    min-height: 42px;
-  }
-  .np-submit {
-    min-height: 46px;
-  }
-}
 
 /* ---------- Flash stage ---------- */
 .stage-flash {
@@ -784,4 +776,53 @@
 }
 .stage-tc .count-readout {
   font-size: var(--fs-3xl);
+}
+
+/* Short screens (e.g. 320×640): tighten the drill so nothing scrolls. */
+@media (max-height: 760px) {
+  .drill {
+    gap: var(--s-2);
+  }
+  .hud {
+    gap: var(--s-2);
+  }
+  .hud-value {
+    font-size: var(--fs-lg);
+  }
+  .combo-mult {
+    min-width: 34px;
+    height: 34px;
+  }
+  .drill-status {
+    min-height: 1.2em;
+    font-size: var(--fs-xs);
+  }
+  .arena-wrap {
+    min-height: 200px;
+  }
+  .stage {
+    padding: var(--s-3);
+  }
+  .card.lg,
+  .card.md {
+    --card-w: clamp(76px, 15vh, 140px);
+  }
+  .count-readout {
+    font-size: var(--fs-3xl);
+  }
+  .prompt-label {
+    font-size: var(--fs-lg);
+  }
+  .np-grid {
+    gap: 6px;
+  }
+  .np-key {
+    min-height: 38px;
+  }
+  .np-submit {
+    min-height: 42px;
+  }
+  .answer-btn {
+    min-height: 64px;
+  }
 }

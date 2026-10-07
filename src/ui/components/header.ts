@@ -84,7 +84,7 @@ export function createHeader(ctx: AppCtx): { el: HTMLElement; update(): void } {
     { class: 'app-header' },
     h(
       'a',
-      { class: 'brand', href: '#/', 'aria-label': 'Count It — home' },
+      { class: 'brand', href: '#/' },
       h('span', { class: 'brand-mark', 'aria-hidden': 'true' }, '+1'),
       h('span', { class: 'brand-name' }, 'Count It'),
     ),

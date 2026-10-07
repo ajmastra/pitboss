@@ -109,7 +109,7 @@ export function createNumpad(opts: { onSubmit(value: number): void; onInput?(): 
     mk('0', '0', () => typeDigit('0'), 'num'),
     mk('⌫', 'Backspace', backspace, 'np-back', 'Delete'),
   );
-  const submitBtn = mk('Enter', 'Enter', submit, 'np-submit', 'Submit count');
+  const submitBtn = mk('Enter', 'Enter', submit, 'np-submit');
   const el = h(
     'div',
     { class: 'numpad', role: 'group', 'aria-label': 'Count entry' },

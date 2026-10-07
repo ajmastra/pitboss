@@ -105,6 +105,35 @@ export function menuScreen(ctx: AppCtx): Screen {
         h('span', { class: 'hilo neg' }, h('b', null, '10–A'), h('i', { class: 'num' }, '−1')),
       ),
     ),
+    data.seenIntro || data.sessions.length > 0
+      ? null
+      : h(
+          'aside',
+          { class: 'welcome' },
+          h(
+            'p',
+            null,
+            h('b', null, 'New to counting? '),
+            'Work down the training path from step 1, or read the ',
+            h('a', { href: '#/about' }, 'two-minute Hi-Lo guide'),
+            ' first. Rounds take about a minute.',
+          ),
+          h(
+            'button',
+            {
+              class: 'icon-btn welcome-close',
+              type: 'button',
+              'aria-label': 'Dismiss',
+              onclick: (e: Event) => {
+                ctx.store.update((d) => {
+                  d.seenIntro = true;
+                });
+                (e.currentTarget as HTMLElement).closest('.welcome')?.remove();
+              },
+            },
+            '×',
+          ),
+        ),
     dailyCard,
     h('h2', { class: 'section-title' }, 'Training path'),
     h('nav', { class: 'mode-grid', 'aria-label': 'Training modes' }, tiles),
@@ -116,6 +145,7 @@ export function menuScreen(ctx: AppCtx): Screen {
       h('a', { href: '#/settings' }, 'Settings'),
       h('a', { href: '#/about' }, 'About & Hi-Lo guide'),
     ),
+    h('p', { class: 'menu-hint' }, 'Press ', h('kbd', null, '?'), ' for keyboard shortcuts'),
     h(
       'p',
       { class: 'legal' },

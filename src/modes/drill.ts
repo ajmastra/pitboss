@@ -177,7 +177,7 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
   const hud = h(
     'div',
     { class: 'hud' },
-    h('div', { class: 'hud-top' }, close, h('span', { class: 'hud-title' }, config.title), timer),
+    h('div', { class: 'hud-top' }, close, h('h1', { class: 'hud-title' }, config.title), timer),
     h('div', { class: 'hud-row' }, scoreBox, combo, speed),
   );
 
@@ -393,7 +393,7 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
     const card = h(
       'div',
       { class: 'intro-card' },
-      h('h1', { class: 'intro-title' }, config.title),
+      h('h2', { class: 'intro-title' }, config.title),
       h('p', { class: 'intro-how' }, config.howTo),
       h('p', { class: 'intro-keys' }, config.keys),
       startBtn,
