@@ -14,6 +14,7 @@ import { Store } from './storage/store';
 import { mountSprite } from './ui/components/sprite';
 import { menuScreen } from './ui/screens/menu';
 import { cardValueScreen } from './modes/cardValue';
+import { dailyScreen, deckScreen, pairsScreen, runningScreen } from './modes/runningCount';
 import { applyTheme } from './ui/theme';
 
 mountSprite();
@@ -25,6 +26,10 @@ store.subscribe((d) => applyTheme(d.settings));
 
 const PLAY: Record<string, ScreenFactory> = {
   values: cardValueScreen,
+  running: runningScreen,
+  pairs: pairsScreen,
+  deck: deckScreen,
+  daily: dailyScreen,
 };
 
 const routes: Record<string, ScreenFactory> = {

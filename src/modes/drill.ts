@@ -48,6 +48,11 @@ export interface DrillApi {
   wait(ms: number): Promise<void>;
   /** End the round now and show results. */
   finish(): void;
+  /**
+   * Freeze the round clock while the player studies feedback. Resolves on
+   * `done` (or after `maxMs` real time, if given).
+   */
+  review(done: Promise<unknown>, maxMs?: number): Promise<void>;
   /** Set a short status line under the HUD. */
   status(text: string, tone?: 'pos' | 'neg' | 'zero' | ''): void;
   setSpeedLabel(text: string | null): void;
@@ -200,6 +205,7 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
   let lastFrame = 0;
   let raf = 0;
   let paused = false;
+  let frozen = false;
   let waits: { at: number; resolve: () => void; reject: (e: Error) => void }[] = [];
   let finished = false;
 
@@ -211,7 +217,8 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
   };
 
   function tick(now: number) {
-    if (!paused && lastFrame && machine.state === 'play') clock += Math.min(100, now - lastFrame);
+    if (!paused && !frozen && lastFrame && machine.state === 'play')
+      clock += Math.min(100, now - lastFrame);
     lastFrame = now;
     if (config.roundMs) {
       const p = Math.max(0, 1 - clock / config.roundMs);
@@ -286,6 +293,24 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
       });
     },
     finish: () => endRound(),
+    async review(done, maxMs) {
+      const signal = abort.signal;
+      frozen = true;
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const t = maxMs ? setTimeout(resolve, maxMs) : 0;
+          done.then(
+            () => resolve(),
+            () => resolve(),
+          );
+          signal.addEventListener('abort', () => (clearTimeout(t), reject(new AbortError())), {
+            once: true,
+          });
+        });
+      } finally {
+        frozen = false;
+      }
+    },
     status(text, tone = '') {
       statusLine.textContent = text;
       statusLine.dataset.tone = tone;
@@ -348,6 +373,7 @@ export function drillScreen(ctx: AppCtx, config: DrillConfig): Screen {
     diff = loadDifficulty();
     rng = createRng(config.seed);
     clock = 0;
+    frozen = false;
     finished = false;
     statusLine.textContent = '';
     timerFill.style.transform = 'scaleX(1)';
