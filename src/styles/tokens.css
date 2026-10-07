@@ -1,0 +1,146 @@
+/* Design tokens — one source of truth for the whole app. */
+:root {
+  /* Felt (overridden per felt theme) */
+  --felt-950: #04140d;
+  --felt-900: #0a2a1e;
+  --felt-800: #0e3a2a;
+  --felt-700: #134b37;
+  --felt-600: #1a5f46;
+  --felt-glow: rgba(66, 170, 120, 0.18);
+
+  /* Accent (overridden per accent theme) */
+  --accent-200: #f6e7c6;
+  --accent-300: #eed59f;
+  --accent-400: #e2bf7c;
+  --accent-500: #d4a95f;
+  --accent-600: #ad8443;
+  --accent-ink: #1d1406;
+
+  /* Neutrals */
+  --ivory: #f8f4ea;
+  --ivory-2: #ece5d3;
+  --ink: #15120e;
+  --text: #f1ede3;
+  --text-dim: #b9c2bb;
+  --text-mute: #8a968f;
+  --line: rgba(241, 237, 227, 0.12);
+  --line-strong: rgba(241, 237, 227, 0.22);
+  --surface: rgba(4, 20, 13, 0.55);
+  --surface-2: rgba(255, 255, 255, 0.04);
+  --surface-3: rgba(255, 255, 255, 0.08);
+
+  /* Semantic */
+  --pos: #6be3a4; /* +1 / correct */
+  --neg: #ff8a7a; /* −1 / wrong */
+  --zero: #c7d1cb; /* 0 */
+  --suit-red: #c2362c;
+  --suit-black: #17140f;
+
+  /* Type */
+  --font-ui: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.6rem;
+  --fs-2xl: clamp(2rem, 6vw, 2.75rem);
+  --fs-3xl: clamp(2.6rem, 9vw, 4rem);
+  --fs-hero: clamp(4rem, 18vw, 7.5rem);
+
+  /* Space (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-2: 0 6px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 1px 1px rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 140ms;
+  --dur: 240ms;
+  --dur-slow: 420ms;
+
+  /* Cards */
+  --card-w: clamp(78px, 22vw, 116px);
+  --card-ratio: 1.4;
+  --card-radius: calc(var(--card-w) * 0.08);
+
+  --focus: 0 0 0 3px var(--felt-900), 0 0 0 5px var(--accent-300);
+  --max-w: 960px;
+  color-scheme: dark;
+}
+
+/* Felt themes */
+:root[data-felt='navy'] {
+  --felt-950: #050c1a;
+  --felt-900: #0a1730;
+  --felt-800: #0f2142;
+  --felt-700: #152d57;
+  --felt-600: #1d3b6e;
+  --felt-glow: rgba(90, 140, 230, 0.18);
+}
+:root[data-felt='burgundy'] {
+  --felt-950: #14050a;
+  --felt-900: #2a0b14;
+  --felt-800: #3a101c;
+  --felt-700: #4c1626;
+  --felt-600: #621d31;
+  --felt-glow: rgba(220, 90, 120, 0.16);
+}
+:root[data-felt='charcoal'] {
+  --felt-950: #08090a;
+  --felt-900: #121417;
+  --felt-800: #1a1d21;
+  --felt-700: #23272c;
+  --felt-600: #2d3238;
+  --felt-glow: rgba(200, 210, 220, 0.1);
+}
+:root[data-felt='teal'] {
+  --felt-950: #03141a;
+  --felt-900: #062831;
+  --felt-800: #0a3742;
+  --felt-700: #0f4855;
+  --felt-600: #155c6b;
+  --felt-glow: rgba(70, 200, 210, 0.16);
+}
+
+/* Accent themes */
+:root[data-accent='platinum'] {
+  --accent-200: #f1f3f6;
+  --accent-300: #dfe3ea;
+  --accent-400: #c6cdd8;
+  --accent-500: #aab3c2;
+  --accent-600: #858fa0;
+  --accent-ink: #10131a;
+}
+:root[data-accent='rose'] {
+  --accent-200: #fbe3dc;
+  --accent-300: #f5c7b9;
+  --accent-400: #eba893;
+  --accent-500: #dd8a72;
+  --accent-600: #b9684f;
+  --accent-ink: #210c06;
+}
+:root[data-accent='jade'] {
+  --accent-200: #dcf7ea;
+  --accent-300: #b5ecd2;
+  --accent-400: #86dcb5;
+  --accent-500: #5cc697;
+  --accent-600: #3e9f74;
+  --accent-ink: #04170e;
+}
