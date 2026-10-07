@@ -693,3 +693,95 @@
 .res-sub {
   display: contents;
 }
+
+/* ---------- True count ---------- */
+.stage-tc {
+  grid-template-columns: auto 1fr;
+  gap: var(--s-4);
+  align-items: center;
+}
+.tc-side {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-2);
+}
+.tray {
+  width: clamp(70px, 20vw, 96px);
+  height: auto;
+  display: block;
+}
+.tray-box {
+  fill: rgba(0, 0, 0, 0.35);
+  stroke: var(--accent-600);
+  stroke-width: 1.5;
+}
+.tray-fill {
+  fill: var(--ivory-2);
+}
+.tray-edge {
+  stroke: rgba(0, 0, 0, 0.18);
+  stroke-width: 1;
+}
+.tray-tick {
+  stroke: var(--text-mute);
+  stroke-width: 1.5;
+}
+.tray-label {
+  fill: var(--text-mute);
+  font-size: 11px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+.tc-caption {
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  text-align: center;
+  font-weight: 600;
+}
+.tc-main {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-2);
+  text-align: center;
+}
+.tc-rc {
+  display: grid;
+  justify-items: center;
+  padding: var(--s-2) var(--s-5);
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.tc-rc-label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  font-weight: 600;
+}
+.tc-rc-value {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+}
+.tc-flash {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+.tc-flash:not(:empty) {
+  min-height: calc(clamp(54px, 13vw, 76px) * 1.45);
+}
+.tc-math {
+  min-height: 1.5em;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.tc-math[data-tone='pos'] {
+  color: var(--pos);
+}
+.tc-math[data-tone='neg'] {
+  color: var(--neg);
+}
+.stage-tc .count-readout {
+  font-size: var(--fs-3xl);
+}

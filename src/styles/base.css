@@ -137,3 +137,7 @@ button {
 :root[data-motion='reduced'] *::after {
   transition-duration: 1ms !important;
 }
+
+[hidden] {
+  display: none !important;
+}

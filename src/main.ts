@@ -14,6 +14,7 @@ import { Store } from './storage/store';
 import { mountSprite } from './ui/components/sprite';
 import { menuScreen } from './ui/screens/menu';
 import { cardValueScreen } from './modes/cardValue';
+import { trueCountScreen } from './modes/trueCount';
 import { dailyScreen, deckScreen, pairsScreen, runningScreen } from './modes/runningCount';
 import { applyTheme } from './ui/theme';
 
@@ -30,6 +31,7 @@ const PLAY: Record<string, ScreenFactory> = {
   pairs: pairsScreen,
   deck: deckScreen,
   daily: dailyScreen,
+  true: trueCountScreen,
 };
 
 const routes: Record<string, ScreenFactory> = {
