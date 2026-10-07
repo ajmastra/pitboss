@@ -13,6 +13,7 @@ import { Sfx } from './audio/sfx';
 import { Store } from './storage/store';
 import { mountSprite } from './ui/components/sprite';
 import { menuScreen } from './ui/screens/menu';
+import { cardValueScreen } from './modes/cardValue';
 import { applyTheme } from './ui/theme';
 
 mountSprite();
@@ -22,8 +23,16 @@ applyTheme(store.get().settings);
 sfx.enabled = store.get().settings.sound;
 store.subscribe((d) => applyTheme(d.settings));
 
+const PLAY: Record<string, ScreenFactory> = {
+  values: cardValueScreen,
+};
+
 const routes: Record<string, ScreenFactory> = {
   menu: menuScreen,
+  play: (ctx, params) => {
+    const factory = PLAY[params[0] ?? ''];
+    return factory ? factory(ctx, params.slice(1)) : menuScreen(ctx);
+  },
 };
 
 if (import.meta.env.DEV) {
