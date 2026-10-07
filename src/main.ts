@@ -13,6 +13,10 @@ import { Sfx } from './audio/sfx';
 import { Store } from './storage/store';
 import { mountSprite } from './ui/components/sprite';
 import { menuScreen } from './ui/screens/menu';
+import { aboutScreen } from './ui/screens/about';
+import { settingsScreen } from './ui/screens/settings';
+import { statsScreen } from './ui/screens/stats';
+import { unlocksScreen } from './ui/screens/unlocks';
 import { cardValueScreen } from './modes/cardValue';
 import { trueCountScreen } from './modes/trueCount';
 import { tableScreen } from './modes/table';
@@ -38,6 +42,10 @@ const PLAY: Record<string, ScreenFactory> = {
 
 const routes: Record<string, ScreenFactory> = {
   menu: menuScreen,
+  stats: statsScreen,
+  unlocks: unlocksScreen,
+  settings: settingsScreen,
+  about: aboutScreen,
   play: (ctx, params) => {
     const factory = PLAY[params[0] ?? ''];
     return factory ? factory(ctx, params.slice(1)) : menuScreen(ctx);
