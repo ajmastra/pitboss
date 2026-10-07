@@ -82,5 +82,5 @@ export function utcDateKey(date: Date = new Date()): string {
 }
 
 export function dailySeed(date: Date = new Date()): string {
-  return `count-it/daily/${utcDateKey(date)}`;
+  return `pitboss/daily/${utcDateKey(date)}`;
 }

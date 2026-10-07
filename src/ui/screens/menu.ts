@@ -90,7 +90,7 @@ export function menuScreen(ctx: AppCtx): Screen {
     h(
       'section',
       { class: 'hero' },
-      h('h1', { class: 'hero-title' }, 'Count It'),
+      h('h1', { class: 'hero-title' }, 'Pitboss'),
       h('p', { class: 'hero-sub' }, 'Learn Hi-Lo card counting, one quick round at a time.'),
       h(
         'div',

@@ -244,7 +244,7 @@ function buildBack(design: string): SVGSVGElement {
               'font-size': 40,
               class: 'monogram',
             },
-            'CI',
+            'PB',
           ),
         )
       : s(

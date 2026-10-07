@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { STORAGE_KEY, Store, defaultSave, parseSave } from './store';
+import { LEGACY_STORAGE_KEY, STORAGE_KEY, Store, defaultSave, parseSave } from './store';
 
 class MemStorage {
   map = new Map<string, string>();
@@ -42,6 +42,17 @@ describe('Store', () => {
     expect(calls).toBe(1);
     expect(new Store(mem).get().xp).toBe(25);
     expect(mem.getItem(STORAGE_KEY)).toContain('"xp":25');
+  });
+
+  it('carries over progress saved under the pre-rename key', () => {
+    const mem = new MemStorage();
+    mem.setItem(LEGACY_STORAGE_KEY, JSON.stringify({ version: 1, xp: 300 }));
+    const store = new Store(mem);
+    expect(store.get().xp).toBe(300);
+    store.update((d) => {
+      d.xp += 1;
+    });
+    expect(mem.getItem(STORAGE_KEY)).toContain('"xp":301');
   });
 
   it('survives a throwing backend', () => {

@@ -98,7 +98,7 @@ export function aboutScreen(): Screen {
       h(
         'p',
         null,
-        'The higher the true count, the more the remaining cards favour the player. Counters raise their bets as the true count rises and bet the minimum when it’s low or negative. Count It trains the counting itself; it doesn’t teach betting systems.',
+        'The higher the true count, the more the remaining cards favour the player. Counters raise their bets as the true count rises and bet the minimum when it’s low or negative. Pitboss trains the counting itself; it doesn’t teach betting systems.',
       ),
     ),
     h(
@@ -158,7 +158,7 @@ export function aboutScreen(): Screen {
       h(
         'p',
         null,
-        'Count It is an educational tool, not gambling advice. Counting cards with your own head is legal, but casinos are private businesses and may refuse service, limit bets, or ask counters to leave. Gambling involves risk of loss. Play responsibly.',
+        'Pitboss is an educational tool, not gambling advice. Counting cards with your own head is legal, but casinos are private businesses and may refuse service, limit bets, or ask counters to leave. Gambling involves risk of loss. Play responsibly.',
       ),
       h(
         'p',

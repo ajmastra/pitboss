@@ -2,7 +2,9 @@ import type { TcRounding } from '../logic/count';
 import type { Difficulty } from '../logic/difficulty';
 import type { ModeId, SessionRecord } from '../logic/stats';
 
-export const STORAGE_KEY = 'countit:v1';
+export const STORAGE_KEY = 'pitboss:v1';
+/** Key used before the rename to Pitboss; read once so progress carries over. */
+export const LEGACY_STORAGE_KEY = 'countit:v1';
 export const SCHEMA_VERSION = 1;
 const MAX_SESSIONS = 500;
 
@@ -110,7 +112,7 @@ export class Store {
   ) {
     let raw: string | null;
     try {
-      raw = this.backend?.getItem(STORAGE_KEY) ?? null;
+      raw = this.backend?.getItem(STORAGE_KEY) ?? this.backend?.getItem(LEGACY_STORAGE_KEY) ?? null;
     } catch {
       raw = null;
     }

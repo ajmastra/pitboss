@@ -1,10 +1,10 @@
-# Count It
+# Pitboss
 
 A small, fast web app that teaches **Hi-Lo card counting** for blackjack through short, replayable drills. Rounds last 30–90 seconds, restart with one key, and get faster as you get better.
 
 Everything runs in the browser. There's no backend and no account, and it makes no network requests after the page loads. Progress is saved to `localStorage` on your device.
 
-> Count It is an educational tool, not gambling advice. Counting cards is legal, but casinos are private businesses and may refuse service to players they suspect of counting.
+> Pitboss is an educational tool, not gambling advice. Counting cards is legal, but casinos are private businesses and may refuse service to players they suspect of counting.
 
 ## What's inside
 
@@ -32,7 +32,7 @@ The game feel comes from these systems:
 
 1. **Tag every card.** 2–6 count **+1**, 7–9 count **0**, and 10/J/Q/K/A count **−1**. A full deck sums to exactly 0.
 2. **Keep a running count.** Start at 0 after the shuffle and add each card's tag as it's exposed, including the dealer's hole card when it flips.
-3. **Convert to a true count.** Divide the running count by the number of decks still in the shoe. For example, +6 with 2 decks left gives a true count of +3. The higher the true count, the better the remaining cards are for the player. By default Count It rounds the true count toward zero (+2.8 becomes +2 and −2.8 becomes −2). Settings also offers floor and round-to-nearest.
+3. **Convert to a true count.** Divide the running count by the number of decks still in the shoe. For example, +6 with 2 decks left gives a true count of +3. The higher the true count, the better the remaining cards are for the player. By default Pitboss rounds the true count toward zero (+2.8 becomes +2 and −2.8 becomes −2). Settings also offers floor and round-to-nearest.
 
 ## Local development
 
@@ -90,8 +90,8 @@ Project sites are served from a subpath (`/<repo>/`), so Vite's `base` is read f
 To test a subpath build locally:
 
 ```bash
-VITE_BASE=/count-it/ npm run build
-VITE_BASE=/count-it/ npm run preview   # open http://localhost:4173/count-it/
+VITE_BASE=/pitboss/ npm run build
+VITE_BASE=/pitboss/ npm run preview   # open http://localhost:4173/pitboss/
 ```
 
 Routing uses the URL hash (`#/play/running`), so deep links work on Pages without a 404 fallback page.

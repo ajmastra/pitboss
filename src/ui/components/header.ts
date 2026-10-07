@@ -86,7 +86,7 @@ export function createHeader(ctx: AppCtx): { el: HTMLElement; update(): void } {
       'a',
       { class: 'brand', href: '#/' },
       h('span', { class: 'brand-mark', 'aria-hidden': 'true' }, '+1'),
-      h('span', { class: 'brand-name' }, 'Count It'),
+      h('span', { class: 'brand-name' }, 'Pitboss'),
     ),
     h('nav', { class: 'header-actions', 'aria-label': 'Quick settings' }, lvl, sound, settings),
   );

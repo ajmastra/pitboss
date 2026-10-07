@@ -62,7 +62,7 @@ export class App {
     this.screen = screen;
     this.root.classList.toggle('is-immersive', screen.immersive === true);
     this.main.replaceChildren(screen.el);
-    document.title = screen.title ? `${screen.title} · Count It` : 'Count It · Hi-Lo Trainer';
+    document.title = screen.title ? `${screen.title} · Pitboss` : 'Pitboss · Hi-Lo Trainer';
     window.scrollTo(0, 0);
     screen.mounted?.();
     void fadeIn(screen.el, 280, 8);
