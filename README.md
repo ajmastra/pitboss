@@ -78,14 +78,16 @@ The repository includes [.github/workflows/deploy.yml](.github/workflows/deploy.
    git push -u origin main
    ```
 2. In the repository, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
-3. Push to `main`, or run the workflow manually from the **Actions** tab. The site is published at `https://<you>.github.io/<repo>/`.
+3. Under **Custom domain**, enter `pitboss.ajmastrangelo.dev`, save, and turn on **Enforce HTTPS** once the certificate is issued. At your DNS provider, the `pitboss` subdomain needs a `CNAME` record pointing to `<you>.github.io`.
+4. Push to `main`, or run the workflow manually from the **Actions** tab. The site is published at `https://pitboss.ajmastrangelo.dev/`.
+
+No `CNAME` file is needed in the repo: with Actions-based deployment, GitHub uses the domain set in the Pages settings and ignores that file.
 
 ### Base path
 
-Project sites are served from a subpath (`/<repo>/`), so Vite's `base` is read from the `VITE_BASE` environment variable. The workflow sets it to `/${{ github.event.repository.name }}/` automatically, so the build follows any repository rename.
+Vite's `base` is read from the `VITE_BASE` environment variable. The site is served from the root of its custom domain, so the workflow sets `VITE_BASE: /`.
 
-- **User or organization site** (a repository named `<you>.github.io`): change `VITE_BASE` in the workflow to `/`.
-- **Custom domain at the root:** also use `/`.
+If you deploy without a custom domain, the site is served from a subpath (`https://<you>.github.io/<repo>/`). In that case set `VITE_BASE` in the workflow to `/${{ github.event.repository.name }}/`.
 
 To test a subpath build locally:
 
